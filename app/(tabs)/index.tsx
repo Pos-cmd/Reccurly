@@ -39,7 +39,10 @@ export default function App() {
                 {formatCurrency(HOME_BALANCE.amount)}
               </Text>
               <Text className="home-balance-date">
-                {dayjs(HOME_BALANCE.nextRenewalDate).format('MM/DD')}
+                {(() => {
+                  const date = dayjs(HOME_BALANCE.nextRenewalDate);
+                  return date.isValid() ? date.format('MM/DD') : 'N/A';
+                })()}
               </Text>
             </View>
           </View>
