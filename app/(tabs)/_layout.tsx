@@ -1,5 +1,6 @@
 import { tabs } from "@/constants/data";
 import { colors, components } from "@/constants/theme";
+import { SubscriptionsProvider } from "@/context/SubscriptionsContext";
 import "@/global.css";
 import { useAuth } from "@clerk/expo";
 import { clsx } from 'clsx';
@@ -35,7 +36,9 @@ export default function TabLayout() {
     return <Redirect href="/onboarding" />;
   }
 
-  return <Tabs screenOptions={{ 
+  return (
+    <SubscriptionsProvider>
+      <Tabs screenOptions={{ 
       headerShown: false,
       tabBarLabelVisibilityMode: "unlabeled",
       tabBarStyle: {
@@ -72,4 +75,6 @@ export default function TabLayout() {
       ))
     }
   </Tabs>
+    </SubscriptionsProvider>
+  );
 }
