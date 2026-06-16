@@ -398,6 +398,38 @@
         @apply text-accent;
     }
 
+    .auth-code-input {
+        @apply rounded-2xl border border-border bg-background px-4 py-4 text-2xl font-sans-bold tracking-[8px] text-primary;
+    }
+
+    .auth-code-input-error {
+        @apply border-destructive;
+    }
+
+    .auth-loader {
+        @apply flex-1 items-center justify-center bg-background;
+    }
+
+    .auth-resend {
+        @apply mt-3 items-center py-2;
+    }
+
+    .auth-resend-text {
+        @apply text-sm font-sans-semibold text-accent;
+    }
+
+    .auth-resend-disabled {
+        @apply text-sm font-sans-medium text-muted-foreground;
+    }
+
+    .auth-back {
+        @apply mb-6 flex-row items-center gap-2 self-start;
+    }
+
+    .auth-back-text {
+        @apply text-sm font-sans-semibold text-muted-foreground;
+    }
+
     .category-scroll {
         @apply flex-row flex-wrap gap-2;
     }
