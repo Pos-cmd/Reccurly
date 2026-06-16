@@ -17,10 +17,22 @@ import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 
 const SafeAreaView = styled(RNSafeAreaView);
 
+/**
+ * Validates the basic structure of an email address.
+ *
+ * @returns `true` if the email matches the pattern `something@something.something`, `false` otherwise.
+ */
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
 
+/**
+ * Renders the authentication screen for signing in with email and password, including multi-factor verification.
+ *
+ * Automatically redirects to the main app if the user is already authenticated. Displays a loading indicator while initializing auth state. Otherwise, presents either a code verification interface for MFA challenges or the email/password sign-in form based on the current authentication status.
+ *
+ * @returns A React Native screen component, or `null` if redirecting due to being already signed in.
+ */
 export default function SignIn() {
   const { isLoaded: authLoaded, isSignedIn } = useAuth();
   const { signIn, errors: clerkErrors, fetchStatus } = useSignIn();

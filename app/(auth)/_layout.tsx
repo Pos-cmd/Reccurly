@@ -3,6 +3,11 @@ import { useAuth } from "@clerk/expo";
 import { Redirect, Stack } from "expo-router";
 import { ActivityIndicator, View } from "react-native";
 
+/**
+ * Routes users based on authentication state, displaying a loading indicator during verification.
+ *
+ * Shows a loading screen while authentication is being checked, redirects authenticated users to the tabs navigation, and renders the authentication stack for unauthenticated users.
+ */
 export default function AuthLayout() {
   const { isLoaded, isSignedIn } = useAuth();
 

@@ -6,6 +6,9 @@ import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 
 const SafeAreaView = styled(RNSafeAreaView);
 
+/**
+ * Renders the onboarding screen for unauthenticated users, with loading and redirect behavior based on authentication status.
+ */
 export default function Onboarding() {
   const { isLoaded, isSignedIn } = useAuth();
 

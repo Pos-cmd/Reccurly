@@ -13,6 +13,9 @@ import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 
 const SafeAreaView = styled(RNSafeAreaView);
 
+/**
+ * Renders a settings screen displaying the authenticated user's profile and account options.
+ */
 export default function Settings() {
   const { user } = useUser();
   const { signOut } = useClerk();

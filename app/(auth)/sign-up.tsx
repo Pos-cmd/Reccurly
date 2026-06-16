@@ -17,10 +17,22 @@ import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 
 const SafeAreaView = styled(RNSafeAreaView);
 
+/**
+ * Determines if a string is a valid email address.
+ *
+ * @returns `true` if the string is a valid email address, `false` otherwise.
+ */
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
 
+/**
+ * Sign-up screen component for account creation and email verification.
+ *
+ * Guides users through a two-step registration process: entering email and password,
+ * then verifying their email address with a 6-digit code. Redirects users who are
+ * already signed in to the main app.
+ */
 export default function SignUp() {
   const { isLoaded: authLoaded, isSignedIn } = useAuth();
   const { signUp, errors: clerkErrors, fetchStatus } = useSignUp();
