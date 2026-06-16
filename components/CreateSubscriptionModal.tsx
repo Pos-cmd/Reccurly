@@ -54,8 +54,10 @@ export default function CreateSubscriptionModal({
   const [category, setCategory] = useState<string>("");
   const [localError, setLocalError] = useState("");
 
-  const priceNum = parseFloat(price);
-  const isValid = name.trim().length > 0 && !isNaN(priceNum) && priceNum > 0;
+ const normalizedPrice = price.trim();
+ const isValidPrice = /^(?:0|[1-9]\d*)(?:\.\d{1,2})?$/.test(normalizedPrice);
+ const priceNum = isValidPrice ? Number(normalizedPrice) : NaN;
+ const isValid = name.trim().length > 0 && isValidPrice && priceNum > 0;
 
   const handleSubmit = () => {
     if (!isValid) {
@@ -67,8 +69,11 @@ export default function CreateSubscriptionModal({
     const renewalDate =
       frequency === "Monthly" ? now.add(1, "month") : now.add(1, "year");
 
+    const nameSlug = name.trim().toLowerCase().replace(/\s+/g, "-");
+    const uniqueSuffix = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+
     const newSubscription: Subscription = {
-      id: `custom-${name.toLowerCase().replace(/\s+/g, "-")}-${now.unix()}`,
+      id: `custom-${nameSlug}-${uniqueSuffix}`,
       icon: icons.wallet,
       name: name.trim(),
       price: priceNum,
