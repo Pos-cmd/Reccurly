@@ -1,7 +1,7 @@
 import { useAuth } from "@clerk/expo";
 import { Link, Redirect } from "expo-router";
 import { styled } from "nativewind";
-import { ActivityIndicator, ScrollView, Text, View } from "react-native";
+import { ActivityIndicator, Pressable, ScrollView, Text, View } from "react-native";
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 
 const SafeAreaView = styled(RNSafeAreaView);
@@ -103,17 +103,17 @@ export default function Onboarding() {
           {/* CTA Buttons */}
           <View className="mt-12 gap-3">
             <Link href="/(auth)/sign-up" asChild>
-              <View className="auth-button">
+              <Pressable accessibilityRole="button" className="auth-button">
                 <Text className="auth-button-text">Create free account</Text>
-              </View>
+              </Pressable>
             </Link>
 
             <Link href="/(auth)/sign-in" asChild>
-              <View className="auth-secondary-button">
+              <Pressable accessibilityRole="button" className="auth-secondary-button">
                 <Text className="auth-secondary-button-text">
                   I already have an account
                 </Text>
-              </View>
+              </Pressable>
             </Link>
           </View>
 

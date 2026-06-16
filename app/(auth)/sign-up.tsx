@@ -2,10 +2,11 @@ import { useAuth, useSignUp } from "@clerk/expo";
 import { clsx } from "clsx";
 import { Link, useRouter } from "expo-router";
 import { styled } from "nativewind";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   KeyboardAvoidingView,
+  Linking,
   Platform,
   Pressable,
   ScrollView,
@@ -108,7 +109,7 @@ export default function SignUp() {
           if (session?.currentTask) return;
           const url = decorateUrl("/(tabs)");
           if (url.startsWith("http")) {
-            window.location.href = url;
+            Linking.openURL(url);
           } else {
             router.push(url as any);
           }
@@ -122,10 +123,11 @@ export default function SignUp() {
   }, [signUp]);
 
   // ── Redirect if already signed in ──────────────────────────────
-  if (authLoaded && isSignedIn) {
-    router.replace("/(tabs)");
-    return null;
-  }
+  useEffect(() => {
+    if (authLoaded && isSignedIn) {
+      router.replace("/(tabs)");
+    }
+  }, [authLoaded, isSignedIn, router])
 
   if (!authLoaded) {
     return (
