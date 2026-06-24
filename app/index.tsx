@@ -2,6 +2,9 @@ import { useAuth } from "@clerk/expo";
 import { Redirect } from "expo-router";
 import { ActivityIndicator, View } from "react-native";
 
+/**
+ * Routes authenticated users to the main app and unauthenticated users to onboarding, displaying a loading indicator while authentication status is being verified.
+ */
 export default function Index() {
   const { isLoaded, isSignedIn } = useAuth();
 

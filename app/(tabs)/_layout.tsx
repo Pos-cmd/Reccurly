@@ -10,6 +10,12 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const tabBar = components.tabBar
 
+/**
+ * Renders the tab-based navigation layout with authentication gating.
+ * 
+ * Displays a loading indicator while authentication state is determined, redirects 
+ * unauthenticated users to onboarding, and renders the main tab navigator for signed-in users.
+ */
 export default function TabLayout() {
   const { isLoaded, isSignedIn } = useAuth();
   const insets = useSafeAreaInsets()

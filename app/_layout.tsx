@@ -16,6 +16,11 @@ if (!publishableKey) {
 
 SplashScreen.preventAutoHideAsync();
 
+/**
+ * Sets up the app's root layout with custom font loading and Clerk authentication context.
+ *
+ * Loads the PlusJakartaSans font family and manages the splash screen visibility. Once fonts are loaded or an error occurs, the splash screen is hidden. The navigation stack is wrapped in `ClerkProvider` to enable authentication throughout the app.
+ */
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
     'sans-regular': require('../assets/fonts/PlusJakartaSans-Regular.ttf'),

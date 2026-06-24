@@ -15,6 +15,12 @@ import { FlatList, Image, Pressable, Text, View } from "react-native";
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
  
 const SafeAreaView = styled(RNSafeAreaView)
+/**
+ * Renders the home screen displaying the user's subscription overview.
+ *
+ * Shows the logged-in user's avatar and name, the current account balance with renewal date,
+ * upcoming subscription renewals, and a list of subscriptions with expandable details.
+ */
 export default function App() {
 
   const { user } = useUser();
